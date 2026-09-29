@@ -1,131 +1,167 @@
-# Analytical Summary: Topic Evolution and Classification Analysis of Beijing PM2.5 Air Quality
+# Analytical Summary: Topic Evolution and Classification Analysis
 
-## Overview
+## About the Project
 
-This project presents an end-to-end **Natural Language Processing (NLP) and environmental data analytics pipeline** for discovering latent environmental patterns and analyzing their evolution over time using the **Beijing PM2.5 Air Quality Dataset**.
+This project presents an analytical study of **Beijing PM2.5 air-quality data** using Natural Language Processing (NLP), topic modeling, statistical analysis, and data visualization techniques.
 
-The project combines traditional statistical topic modeling with modern transformer-based semantic modeling to investigate relationships between air pollution, meteorological conditions, pollution categories, and temporal environmental patterns.
+The main objective is to identify meaningful environmental patterns from air-quality observations and investigate how these patterns vary across different time periods, pollution levels, seasons, and meteorological conditions.
 
-The central objective is to transform structured air-quality measurements into textual environmental descriptions and apply **BERTopic and Latent Dirichlet Allocation (LDA)** to identify meaningful latent topics. These topics are subsequently analyzed across time, seasons, pollution levels, and meteorological conditions.
+The project combines **BERTopic** and **Latent Dirichlet Allocation (LDA)** to discover latent topics from environmental data. The topic-modeling approaches are evaluated using topic coherence, allowing their results to be quantitatively compared.
 
-The project therefore integrates:
+## Objectives
 
-- Environmental data preprocessing
-- Feature engineering
-- Text generation from structured sensor measurements
-- NLP preprocessing
-- Transformer-based topic modeling
-- Traditional LDA topic modeling
-- Topic coherence evaluation
-- Model comparison
-- Temporal topic evolution
-- Pollution-level classification
-- Meteorological correlation analysis
-- Seasonal and hourly pollution analysis
-- Topic-environment relationship analysis
-- Visualization and result export
-
----
-
-## Project Objectives
-
-The major objectives of this project are:
-
-1. **Analyze Beijing PM2.5 air-quality data** across time and environmental conditions.
-2. Transform numerical environmental measurements into structured textual descriptions suitable for NLP-based analysis.
-3. Discover latent environmental patterns using **BERTopic**.
-4. Compare transformer-based BERTopic models with traditional **LDA topic models**.
-5. Optimize topic-model configurations using **topic coherence** as a quality measure.
-6. Examine how discovered topics evolve across different time periods.
-7. Investigate relationships between environmental topics and pollution levels.
-8. Analyze correlations between PM2.5 concentrations and meteorological variables.
-9. Identify seasonal and time-of-day pollution patterns.
-10. Produce interpretable visualizations and export analytical results for further research.
-
----
+- Analyze Beijing PM2.5 air-quality data.
+- Explore temporal and environmental pollution patterns.
+- Transform structured environmental observations into text representations.
+- Apply BERTopic for semantic topic discovery.
+- Apply LDA as a traditional topic-modeling baseline.
+- Compare different topic-model configurations using coherence scores.
+- Analyze topic evolution over time.
+- Investigate the relationship between topics and pollution levels.
+- Examine relationships between PM2.5 and meteorological variables.
+- Analyze seasonal, monthly, hourly, and time-of-day pollution patterns.
+- Generate visualizations and export analytical results.
 
 ## Dataset
 
-The project uses the **Beijing PM2.5 Air Quality Dataset**, covering hourly observations from **2010 to 2014**.
+The project uses the **Beijing PM2.5 Air Quality Dataset**, containing hourly air-quality and meteorological observations.
 
-The dataset contains environmental measurements including:
+Important variables include:
 
-| Feature | Description |
-|---|---|
-| `year` | Year of observation |
-| `month` | Month of observation |
-| `day` | Day of observation |
-| `hour` | Hour of observation |
-| `pm2.5` | PM2.5 concentration |
-| `DEWP` | Dew point |
-| `TEMP` | Temperature |
-| `PRES` | Atmospheric pressure |
-| `cbwd` | Combined wind direction |
-| `Iws` / `IWS` | Cumulated wind speed |
-| `Is` | Cumulated hours of snow |
-| `Ir` | Cumulated hours of rain |
+- `year` – Year of observation
+- `month` – Month of observation
+- `day` – Day of observation
+- `hour` – Hour of observation
+- `pm2.5` – PM2.5 concentration
+- `DEWP` – Dew point
+- `TEMP` – Temperature
+- `PRES` – Atmospheric pressure
+- `cbwd` – Combined wind direction
+- `Iws` – Cumulated wind speed
+- `Is` – Cumulated hours of snow
+- `Ir` – Cumulated hours of rain
 
-The notebook loads the dataset from the UCI Machine Learning Repository and includes a fallback mechanism for generating synthetic environmental data if the external dataset cannot be loaded.
+## Methodology
 
----
+The analytical workflow consists of the following major stages:
 
-## Analytical Framework
+1. Data loading and validation
+2. Data cleaning and missing-value handling
+3. Date and time feature construction
+4. Environmental feature engineering
+5. Pollution-level categorization
+6. Conversion of numerical observations into environmental text descriptions
+7. NLP preprocessing
+8. Time-window construction
+9. BERTopic modeling
+10. LDA topic modeling
+11. Topic coherence evaluation
+12. Model comparison
+13. Topic evolution analysis
+14. Environmental and pollution analysis
+15. Meteorological correlation analysis
+16. Visualization and result export
 
-The project follows a multi-stage analytical workflow.
+## Topic Modeling
+
+### BERTopic
+
+BERTopic is used to discover semantic topics from environmental observations.
+
+The workflow uses transformer-based sentence embeddings together with dimensionality reduction, clustering, and topic representation techniques.
+
+The project evaluates different embedding and UMAP configurations to investigate their influence on topic discovery.
+
+### Latent Dirichlet Allocation
+
+LDA is implemented as a traditional probabilistic topic-modeling baseline.
+
+Different numbers of topics are evaluated, including:
+
+- LDA with 5 topics
+- LDA with 10 topics
+- LDA with 15 topics
+
+## Model Evaluation
+
+Topic-model quality is evaluated using **topic coherence**.
+
+The project compares the coherence of different BERTopic and LDA configurations and identifies configurations with stronger topic-word coherence.
+
+The analytical results reported in the notebook include an LDA configuration with 5 topics achieving a coherence score of approximately **0.951**.
+
+## Topic Evolution Analysis
+
+The discovered topics are analyzed across time to investigate how environmental patterns change throughout the study period.
+
+The analysis includes:
+
+- Monthly topic distributions
+- Topic frequency trends
+- Temporal topic patterns
+- Topic-environment relationships
+
+## Environmental Analysis
+
+The project investigates relationships between discovered topics and environmental variables, including:
+
+- PM2.5 concentration
+- Temperature
+- Humidity
+- Wind speed
+- Atmospheric pressure
+- Dew point
+- Precipitation
+
+Pollution levels are also categorized to facilitate analysis of topic distributions under different pollution conditions.
+
+## Temporal Analysis
+
+The project analyzes PM2.5 and topic patterns across:
+
+- Seasons
+- Months
+- Hours of the day
+- Different time periods
+
+These analyses help identify temporal variations in air-quality conditions.
+
+## Visualizations
+
+The project generates several visualizations, including:
+
+- PM2.5 distributions
+- Pollution-level distributions
+- Topic distributions
+- Topic evolution plots
+- Topic coherence comparisons
+- Topic similarity visualizations
+- Topic-environment heatmaps
+- Seasonal analysis
+- Monthly PM2.5 trends
+- Hourly pollution patterns
+- Meteorological correlation matrices
+
+## Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Plotly
+- Scikit-learn
+- BERTopic
+- Sentence Transformers
+- Gensim
+- UMAP
+- HDBSCAN
+- Google Colab
+
+## Project Structure
 
 ```text
-Beijing PM2.5 Dataset
-        │
-        ▼
-Data Loading & Validation
-        │
-        ▼
-Data Cleaning & Missing-Value Handling
-        │
-        ▼
-Feature Engineering
-        │
-        ├── Date/Time Features
-        ├── Seasonal Features
-        ├── Time-of-Day Features
-        └── Pollution Categories
-        │
-        ▼
-Environmental Text Generation
-        │
-        ▼
-Text Preprocessing
-        │
-        ▼
-Time-Window Creation
-        │
-        ▼
-Topic Modeling
-        │
-        ├───────────────┐
-        ▼               ▼
-    BERTopic           LDA
-        │               │
-        └───────┬───────┘
-                ▼
-        Topic Coherence
-        & Model Comparison
-                │
-                ▼
-        Best Configuration
-                │
-        ┌───────┼────────┐
-        ▼       ▼        ▼
-   Topic      Topic    Environmental
- Evolution  Distribution  Analysis
-        │       │        │
-        └───────┼────────┘
-                ▼
-       Final Environmental
-             Insights
-
-### A small correction I recommend
-
-Your notebook filename says **“Topic Evolution and Classification Analysis,”** but the classification part is primarily **pollution-level categorization**, not a conventional supervised ML classifier such as Random Forest, SVM, or Logistic Regression. The README above deliberately describes it as **pollution-level classification/categorization** rather than claiming that a supervised classifier was trained.
-
-Also, I would **not put “Best Model: LDA_5” permanently in the README as an absolute conclusion** if you intend to keep experimenting. Your notebook has a second, enhanced comparison that evaluates multiple BERTopic configurations and LDA configurations. The README above therefore describes `LDA_5 / 0.951` as the **reported result in the analytical summary**, while explaining that the enhanced framework performs its own comparison. This keeps your GitHub documentation scientifically defensible.
+Analytical-Summary-Topic-Evolution-Classification/
+│
+├── Analytical_Summary_Topic__Evolution__Classification__Analysis_.ipynb
+└── README.md
